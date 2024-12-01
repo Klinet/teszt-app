@@ -1,0 +1,17 @@
+{
+    "name": "akali/app",
+    "description": "orvos kereso pelda alkalmazas",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Klinet",
+            "email": "akali.klinet@gmail.com"
+        }
+    ],
+    "require": {}
+}

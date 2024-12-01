@@ -1,0 +1,71 @@
+{
+  "doctors": [
+    {
+      "id": 1,
+      "name": "Minta Béla",
+      "specialty": "Bőrgyógyász"
+    },
+    {
+      "id": 2,
+      "name": "Minta Anita",
+      "specialty": "Bőrgyógyász"
+    },
+    {
+      "id": 3,
+      "name": "Minta Balázs",
+      "specialty": "Nőgyógyász"
+    },
+    {
+      "id": 4,
+      "name": "Minta Bence",
+      "specialty": "Kardiológus"
+    },
+    {
+      "id": 5,
+      "name": "Minta Sándor",
+      "specialty": "Nőgyógyász"
+    }
+  ],
+  "clinics": [
+    {
+      "id": 1,
+      "name": "Minta Klinika"
+    },
+    {
+      "id": 2,
+      "name": "Teszt Klinika"
+    }
+  ],
+  "doctor-clinic": [
+    {
+      "id": 1,
+      "doctor_id": 1,
+      "clinic_id": 1
+    },
+    {
+      "id": 2,
+      "doctor_id": 1,
+      "clinic_id": 2
+    },
+    {
+      "id": 3,
+      "doctor_id": 2,
+      "clinic_id": 2
+    },
+    {
+      "id": 4,
+      "doctor_id": 3,
+      "clinic_id": 1
+    },
+    {
+      "id": 5,
+      "doctor_id": 4,
+      "clinic_id": 1
+    },
+    {
+      "id": 6,
+      "doctor_id": 5,
+      "clinic_id": 2
+    }
+  ]
+}
