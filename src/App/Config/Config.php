@@ -4,8 +4,8 @@ namespace App\Config;
 
 class Config
 {
-    private static $config;
-    public static function getConfig()
+    private static array $config;
+    public static function getConfig(): array
     {
         self::$config = [
             'base_url' => 'http://localhost/',

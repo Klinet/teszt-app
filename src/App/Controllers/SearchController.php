@@ -5,7 +5,7 @@ use App\Classes\ResultsProvider;
 
 class SearchController
 {
-    public function submitForm($request)
+    public function submitForm($request): void
     {
         $term = $request->postData['term'] ?? '';
         $term = htmlspecialchars($term, ENT_QUOTES, 'UTF-8');
