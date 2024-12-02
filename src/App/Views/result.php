@@ -1,20 +1,3 @@
-<?php
-
-use App\Classes\Request;
-use App\Classes\Router;
-use App\Controllers\SearchController;
-
-$router = new Router();
-
-$router->addRoute('POST', '/submit-form', function() {
-    $request = new Request();
-    $controller = new SearchController();
-    $controller->submitForm($request);
-});
-
-$router->dispatch();
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +11,7 @@ $router->dispatch();
 </head>
 <body>
 <div class="wrapper">
-<main id="indexPage" class="mainSection">
+    <main id="indexPage" class="mainSection">
         <section>
             <div class="py-10 h-screen bg-gray-300 px-2">
                 <div class="max-w-md mx-auto bg-gray-100 shadow-lg rounded-lg overflow-hidden md:max-w-lg">
@@ -44,7 +27,8 @@ $router->dispatch();
                                                class="flex-grow h-12 rounded focus:outline-none px-3 focus:shadow-md"
                                                placeholder="Keresendő Név vagy Szak..." name="term" value="Bőrgyógyász"
                                                autocomplete="off">
-                                        <button style="background-color: #79b256" class="px-4 py-2 text-sm text-white rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300" type="submit">Keress!</button>
+                                        <button style="background-color: #79b256" class="px-4 py-1 text-sm text-white rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300" type="submit">Keress!</button>
+                                        <a href="/" style="background-color: #4782a1" class="px-4 py-3 text-sm text-white rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">Ürít</a>
                                     </form>
                                 </div>
                             </header>

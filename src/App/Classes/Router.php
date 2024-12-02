@@ -6,12 +6,12 @@ class Router
 {
     private $routes = [];
 
-    public function addRoute($method, $path, $handler)
+    public function addRoute($method, $path, $handler): void
     {
         $this->routes[] = compact('method', 'path', 'handler');
     }
 
-    public function dispatch()
+    public function dispatch(): void
     {
         $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $requestMethod = $_SERVER['REQUEST_METHOD'];

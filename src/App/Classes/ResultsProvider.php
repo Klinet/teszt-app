@@ -24,7 +24,7 @@ class ResultsProvider
         return $this->data;
     }
 
-    private function searchDoctorsAndClinics($data, $term)
+    private function searchDoctorsAndClinics($data, $term): array
     {
         $termLower = strtolower($term);
 
@@ -64,7 +64,7 @@ class ResultsProvider
         }, $relatedClinicIds);
     }
 
-    private function findClinicNamesByIds($data, $clinicIds)
+    private function findClinicNamesByIds($data, $clinicIds): array
     {
         $clinicNames = [];
         foreach ($clinicIds as $clinicId) {
@@ -77,25 +77,25 @@ class ResultsProvider
         return $clinicNames;
     }
 
-    function generateList($jsonContent, $result)
+    function generateList($jsonContent, $result): string
     {
-        $html = '<ul class="resultListUl">';
+        $clinicNames = [];
+        foreach ($jsonContent['clinics'] as $clinic) {
+            $clinicNames[$clinic['id']] = $clinic['name'];
+        }
+        $list = '<ul class="d-inline-block w-100">';
         foreach ($result['doctors'] as $doctor) {
             $relatedClinicIds = $this->findClinicsByDoctorId($jsonContent, $doctor['id']);
             $relatedClinicNames = $this->findClinicNamesByIds($jsonContent, $relatedClinicIds);
-            $html .= '<hr><li>';
-            $html .= '<strong>ID:</strong> ' . htmlspecialchars($doctor['id']) . '<br>';
-            $html .= '<strong>Name:</strong> ' . htmlspecialchars($doctor['name']) . '<br>';
-            $html .= '<strong>Specialty:</strong> ' . htmlspecialchars($doctor['specialty']) . '<br>';
-            $html .= '<strong>Clinic Names:</strong> ' . implode(', ', $relatedClinicNames) . '<br>';
-            $html .= '</li><hr>';
+            $list .= '<li class="flex justify-between items-center bg-white mt-2 p-2 hover:shadow-lg rounded cursor-pointer transition">';
+            $list .= '<div class="flex ml-2"><img src="https://fakeimg.pl/350x200/?text=Hello" width="40" height="40" class="rounded-full" alt="fakeimg">';
+            $list .= '<div class="flex flex-col ml-2"><span class="font-medium text-black">' . htmlspecialchars($doctor['name']) . '</span>';
+            $list .= '<span class="text-sm text-gray-400 truncate w-32">' . htmlspecialchars($doctor['specialty']) . '</span></div></div>';
+            $list .= '<div class="flex flex-col text-right"><span class="text-gray-500">Klinika:<br>';
+            $list .= '<div class="flex flex-col text-right"><span class="text-gray-500">' . implode(', ', $relatedClinicNames) . '<br>';
+            $list .= '</span></div></li>';
         }
-        $html .= '</ul><hr>';
-        return $html;
-    }
-
-    function safe_htmlspecialchars($value)
-    {
-        return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
+        $list .= '</ul>';
+        return $list;
     }
 }
