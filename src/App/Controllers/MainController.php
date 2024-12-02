@@ -7,15 +7,15 @@ class MainController
 {
     public function index(): void
     {
-        $data = [];
         $data = DataModel::getData();
         $this->render(compact('data'));
     }
 
-    private function render($data = []): void
+    public function render($data): void
     {
         extract($data);
-        $viewPath = __DIR__ . '/../Views/' . 'index' . '.php';
+        //$viewPath = __DIR__ . '/../Views/' . 'index' . '.php';
+        $viewPath = __DIR__ . '/../Views/' . 'search' . '.php';
         require __DIR__ . '/../Views/layout.php';
     }
 }
